@@ -1,21 +1,24 @@
 import React, { Component } from 'react';
 import { Row, Col} from 'react-flexbox-grid';
-import Posts from './../Posts';
-import Filters from './../Filters';
+import { PropTypes } from 'prop-types';
+
 import './css/Content.css';
 
+const ROOT = 'https://badenblog-api.herokuapp.com/';
+const postsByCategoryEnpoint = 'post/byCategory';
+const postsActiveEnpoint = 'post/actives';
+const searchPostEnpoint = 'post/search/';
+
 class Content extends Component {
+  static propTypes = {
+    body: PropTypes.object.isRequired
+  };
+  
   render() {
+    const { body } = this.props;
     return (
-    	<div className="Content">
-      <Row>
-        <Col xs={12} md={3} lg={3}>
-          <Filters/>
-        </Col>
-        <Col xs={12} md={9} lg={9}>
-          <Posts />
-        </Col>
-      </Row>
+    	<div>
+       {body}
       </div>
     );
   }

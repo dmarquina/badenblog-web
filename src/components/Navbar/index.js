@@ -2,7 +2,7 @@ import React,{ Component } from 'react';
 import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';  
-
+import { Link } from 'react-router-dom';  
 import PropTypes from 'prop-types';
 
 	const styles = {
@@ -34,7 +34,9 @@ class Navbar extends Component{
 		  	showMenuIconButton={false}
 		    iconElementRight={
 		    	<div style={styles.actionGroup} >
-			    	<FlatButton label="Publicar Juego" secondary={true} style={styles.buttonSpace}/>
+						<Link to={'/newPost'}>
+			    		<FlatButton label="Publicar Juego" secondary={true} style={styles.buttonSpace}/>
+						</Link>
 			    	<FlatButton label="Ingresar" primary={true} style={styles.buttonSpace}/>
 			    	<RaisedButton label="Registrarse" primary={true}  style={styles.buttonSpace}/>
 		    	</div>

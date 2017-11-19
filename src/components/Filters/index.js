@@ -15,7 +15,7 @@ export default class Filters extends Component {
               <div>
                 <h2>Filtros</h2>
                 <Divider/>
-                <h3>Edad</h3>
+{/*                <h3>Edad</h3>
                 <Row >
                   <Col sm={12} >
                     <TextField
@@ -31,6 +31,7 @@ export default class Filters extends Component {
                   </Col>
                 </Row >
                 <RaisedButton label="Aplicar" primary={true} fullWidth={true}/>
+*/}
                 <h3>Categorías</h3>
                 <Categoryfilter/>
               </div>

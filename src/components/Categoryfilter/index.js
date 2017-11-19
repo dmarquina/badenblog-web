@@ -2,49 +2,47 @@ import React, {Component} from 'react';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
+import axios from 'axios';
 
-const persons = [
-  {value: 0, name: 'Campamento'},
-  {value: 1, name: 'Grupos gandres'},
-  {value: 2, name: 'Grupos pequeños'},
-  {value: 3, name: 'Duelo'},
-  {value: 4, name: 'Otros juegs'},
-  {value: 5, name: 'Otros juegs'},
-  {value: 6, name: 'Otros juegs'},
-  {value: 7, name: 'Otros juegs'},
-  {value: 8, name: 'Otros juegs'},
-  {value: 9, name: 'Otros juegs'},
-];
-
-/**
- * The rendering of selected items can be customized by providing a `selectionRenderer`.
- */
 class Categoryfilter extends Component {
   state = {
+    categories:[],
     values: [],
   };
 
-  handleChange = (event, index, values) => this.setState({values});
+  async componentDidMount(){
+    const response = await axios.get('https://badenblog-api.herokuapp.com/category/all')
+    this.setState({categories : response.data.content});
+  }
+  
+  onClick(){
+    this.props.onClick(this.state.values);
+  }
+
+  handleChange = (event, index, values) => {
+    this.setState({values});
+  }
 
   selectionRenderer = (values) => {
     switch (values.length) {
       case 0:
         return '';
       case 1:
-        return persons[values[0]].name;
+        let categorySelected = this.state.categories.find((cat)=> values[0]===cat.idCategory);
+        return categorySelected.name; 
       default:
         return `${values.length} categorias seleccionadas`;
     }
   }
 
-  menuItems(persons) {
-    return persons.map((person) => (
+  menuItems(categories) {
+    return categories.map((category) => (
       <MenuItem
-        key={person.value}
+        key={category.idCategory}
         insetChildren={true}
-        checked={this.state.values.indexOf(person.value) > -1}
-        value={person.value}
-        primaryText={person.name}
+        checked={this.state.values.indexOf(category.idCategory) > -1}
+        value={category.idCategory}
+        primaryText={category.name}
       />
     ));
   }
@@ -60,9 +58,10 @@ class Categoryfilter extends Component {
           selectionRenderer={this.selectionRenderer}
           maxHeight={250}
         >
-          {this.menuItems(persons)}
+          {this.menuItems(this.state.categories)}
         </SelectField>
-        <RaisedButton label="Aplicar" primary={true} fullWidth={true}/>
+        <RaisedButton label="Aplicar" onClick={this.onClick.bind(this)}
+                      primary={true} fullWidth={true}/>
       </div>
     );
   }

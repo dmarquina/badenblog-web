@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from './Global/Header';
 import Content from './Global/Content';
+import PropTypes from 'prop-types';
 
 import {purple300,greenA700,white,darkBlack} from 'material-ui/styles/colors';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -19,12 +20,18 @@ const muiTheme = getMuiTheme({
 
 
 class App extends Component {
+  static propTypes = {
+    children: PropTypes.object.isRequired
+  };
+
   render() {
+    const {children} = this.props;
+     
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
           <Header />
-          <Content />
+          <Content body={children}/>
         </div>
       </MuiThemeProvider>
     );
