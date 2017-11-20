@@ -35,3 +35,21 @@ h1,h2,h3,h4,h5{
 .postBox:hover {
   border: 1px solid #BA68C8;
 }
+
+.input-range{
+  margin: 20px 2px;
+}
+
+.input-range__slider{
+  background: #BA68C8;
+  border: 1px solid #BA68C8;
+}
+
+.input-range__label{
+  color: gray;
+  font-size: 14px;
+}
+
+.input-range__track--active{
+  background: #BA68C8;
+}

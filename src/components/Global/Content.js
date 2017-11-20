@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col} from 'react-flexbox-grid';
 import { PropTypes } from 'prop-types';
-
 import './css/Content.css';
 
 const ROOT = 'https://badenblog-api.herokuapp.com/';

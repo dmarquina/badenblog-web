@@ -1,10 +1,7 @@
 import React, {Component}  from 'react';
 import Categoryfilter from '../Categoryfilter';
-import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
-import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
-import { Row, Col} from 'react-flexbox-grid';
+import Paper from 'material-ui/Paper';
 
 export default class Filters extends Component {
   
