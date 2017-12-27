@@ -53,3 +53,28 @@ h1,h2,h3,h4,h5{
 .input-range__track--active{
   background: #BA68C8;
 }
+
+.facebook-login-button{
+  background: #3B5998;
+  padding: 10px; 
+  border: 1px solid #3B5998;
+  width: 60%;
+  margin-top: 20px;
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.facebook-login-button i {
+  margin-right: 15px; 
+  color: #fff;
+}
+
+.dialog-close-icon{
+  float:right;
+  top: -15px;
+}
+
+.dialog-close-icon svg{
+  color: #9E9E9E !important;
+}

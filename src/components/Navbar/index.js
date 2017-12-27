@@ -2,6 +2,7 @@ import React,{ Component } from 'react';
 import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';  
+import LoginModal from './../LoginModal';
 import { Link } from 'react-router-dom';  
 import PropTypes from 'prop-types';
 
@@ -23,7 +24,19 @@ import PropTypes from 'prop-types';
 class Navbar extends Component{
  	static propTypes = {
  		title: PropTypes.string.isRequired,
- 	}
+	}
+	 
+	state = {
+		openLoginModal: false,
+	};
+
+	handleOpenLoginModal = () => {
+		this.setState({openLoginModal: true});
+	};
+
+	handleCloseLoginModal = () => {
+		this.setState({openLoginModal: false});
+	};
 
 	render (){
 		const { title } = this.props
@@ -37,8 +50,9 @@ class Navbar extends Component{
 						<Link to={'/newPost'}>
 			    		<FlatButton label="Publicar Juego" secondary={true} style={styles.buttonSpace}/>
 						</Link>
-			    	<FlatButton label="Ingresar" primary={true} style={styles.buttonSpace}/>
+			    	<FlatButton label="Ingresar" primary={true} style={styles.buttonSpace} onClick={this.handleOpenLoginModal}/>
 			    	<RaisedButton label="Registrarse" primary={true}  style={styles.buttonSpace}/>
+					<LoginModal open={this.state.openLoginModal}/>
 		    	</div>
 		    	}
 		  />
