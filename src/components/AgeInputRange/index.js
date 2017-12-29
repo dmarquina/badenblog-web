@@ -35,8 +35,7 @@ class AgeInputRange extends React.Component {
                 minValue={0}
                 value={this.state.value}
                 onChange={value => this.setState({ value })} />
-                <ChipInput
-  defaultValue={['foo', 'bar']}
+                <ChipInput defaultValue={['foo', 'bar']}
 />
         </div>
     );
