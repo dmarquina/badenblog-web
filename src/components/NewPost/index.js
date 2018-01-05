@@ -2,17 +2,21 @@ import React , { Component } from 'react';
 import {Card, CardActions, CardTitle, CardText} from 'material-ui/Card';
 import { Row, Col} from 'react-flexbox-grid';
 import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import AgeInputRange from './../AgeInputRange';
+import MaterialsChip from './../MaterialsChip';
 import 'react-input-range/lib/css/index.css';
 
+const styles = {
+    cardButtons:{
+      textAlign:'right',
+    },
+  
+  
+  };
 class NewPost extends Component {
-    constructor(){
-        super();
-        this.state = {
-            value: { min: 2, max: 10 },
-        };
-    }
+    
         render(){
         return (
             <div className="newPostPanel" >
@@ -35,10 +39,11 @@ class NewPost extends Component {
                                     rowsMax={3}
                                     /><br />
                                 <AgeInputRange />
-                            </CardText>
+                                <MaterialsChip />
                             <CardActions className="alignRight">
                                 <FlatButton label="Publicar" />
                             </CardActions>
+                            </CardText>
                         </Card>
                     </Col>
                 </Row>

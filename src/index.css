@@ -26,7 +26,6 @@ h1,h2,h3,h4,h5{
   margin-bottom: 10px;
 }
 
-
 .filterbox  h2,h3,h4,h5{
   font-weight: 400;
   margin-bottom: 0px;
@@ -34,6 +33,11 @@ h1,h2,h3,h4,h5{
 
 .filterbox  h2{
   margin-top: 5px;
+}
+
+.centralBody{
+  width:90%;
+  margin:0 auto;
 }
 
 .postBoxReference {
@@ -93,4 +97,8 @@ h1,h2,h3,h4,h5{
 
 .dialog-close-icon svg{
   color: #9E9E9E !important;
+}
+
+.chipInput{
+  width:100% !important;
 }

@@ -120,7 +120,7 @@ class Home extends Component {
     return (
     	<div>
         <Searcher onClick = {this.handleSearch}/>
-        <Row className="CentralBody">
+        <Row className="centralBody">
           <Col xs={12} md={3} lg={3}>
             <div>
               <Paper className='filterbox' children={

@@ -1,7 +1,6 @@
 import React from 'react';
 import InputRange from 'react-input-range';
 import Subheader from 'material-ui/Subheader';
-import ChipInput from 'material-ui-chip-input'
 
 const styles = {
   ageInput:{
@@ -9,7 +8,6 @@ const styles = {
   },
   subheader:{
     paddingLeft:'0',
-    color:'#BA68C8',
   },
   ageInputRange:{
     margin:'10px 0',
@@ -22,7 +20,7 @@ class AgeInputRange extends React.Component {
     super(props);
 
     this.state = {
-      value: { min: 1, max: 12 },
+      value: { min: 7, max: 12 },
     };
   }
 
@@ -32,11 +30,9 @@ class AgeInputRange extends React.Component {
             <Subheader style={styles.subheader}>Edad</Subheader>
             <InputRange style={styles.ageInputRange}
                 maxValue={21}
-                minValue={0}
+                minValue={7}
                 value={this.state.value}
                 onChange={value => this.setState({ value })} />
-                <ChipInput defaultValue={['foo', 'bar']}
-/>
         </div>
     );
   }
