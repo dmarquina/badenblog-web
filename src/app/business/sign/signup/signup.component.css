@@ -1,0 +1,56 @@
+.welcome-container{
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+h1 + h4{
+    margin-top: 0;
+}
+
+.signup-container{
+    border: 4px solid #00897B;
+    padding: 40px 20px;
+    border-radius: 15px;
+}
+
+.signup-button{
+    background: #00897B;
+    color: #fff;
+    font-size: 1em;
+}
+
+#gmail {
+    background: #dd5347;
+}
+
+#gmail i{
+    border-right: 2px solid #fff;
+    padding: 10px 12px 10px 1px;
+}
+
+#gmail span{
+    padding-left: 10px;
+}
+
+
+.facebook-signup {
+    background:#3B5998;
+}
+
+.facebook-signup > i{
+    border-right: 2px solid white;
+    padding: 10px 20px 10px 10px;
+}
+
+.facebook-signup > span{
+    padding-left: 30px;
+}
+
+@media only screen and (min-width: 601px){
+    #fb{
+        border-right: 2px solid #fafafa;
+    }
+    #gmail{
+        border-left: 2px solid #fafafa;
+    }
+}

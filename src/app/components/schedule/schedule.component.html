@@ -1,0 +1,13 @@
+<article class="article-container col m5 s12">
+    <div style="margin: 15px 0;" class="panel" >
+        <div class="panel-heading">Programa de actividades</div>
+        <div class="panel-body" dnd-sortable-container [dropZones]="['activities-zone']" [sortableData]="receivedData">
+            <ul>
+                <li *ngFor="let post of receivedData; let i = index"
+                    dnd-sortable [sortableIndex]="i">
+                   <activity [activity] = post></activity>
+                </li>
+            </ul>
+        </div>
+    </div>
+</article>

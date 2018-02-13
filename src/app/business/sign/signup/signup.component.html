@@ -1,0 +1,48 @@
+<div class="signup-component">
+  <div class="row welcome-container">
+    <h1>Registrate</h1>
+    <h4>¿Ya tienes cuenta? <a routerLink="/iniciarSesion"><strong>Inicia sesión</strong></a></h4>
+
+    <div class="row">
+      <section class="signup-container col xl6 l8 m12 s12 push-xl3 push-l2 ">
+        <article>
+          <form class="form" method="POST" (ngSubmit)="createUser()" #createForm="ngForm">
+              <mat-form-field class="col m6 s12">
+                <input matInput placeholder="Nombres" type="text" [(ngModel)]="newUser.name" name="name" required>
+              </mat-form-field>
+
+              <mat-form-field class="col m6 s12">
+                <input matInput placeholder="Apellidos" type="text" [(ngModel)]="newUser.lastName" name="lastName" required>
+              </mat-form-field>
+
+              <mat-form-field class="col m12 s12">
+                <input matInput placeholder="Correo electrónico" type="email" [(ngModel)]="newUser.email" name="email" required>
+              </mat-form-field>
+              
+              <mat-form-field class="col m6 s12">
+                <input matInput placeholder="Contraseña" type="password" [(ngModel)]="newUser.password" name="password" required>
+              </mat-form-field>
+
+              <mat-form-field class="col m6 s12">
+                <input matInput class="col m12 s12" placeholder="Repetir contraseña" type="password" [(ngModel)]="password2" name="password" required>
+              </mat-form-field>
+            
+              <button mat-raised-button class="col m12 s12 signup-button" type="submit" [disabled]="disableCreate" >Registrarse</button>
+          </form>
+        </article>
+        <article>
+          <div>
+              <app-facebook></app-facebook>
+            <!--<button mat-raised-button (click)="loginGoogle()" class="social-button col m6 s12" id="gmail">
+              <i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i>
+              <span>
+                Registrarse con Gmail
+              </span> 
+              </button>-->
+          </div>
+        </article>
+      </section>
+    </div>
+  </div>
+</div>
+

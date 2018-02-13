@@ -1,0 +1,12 @@
+.post-pagination{
+    text-align: center;
+}
+
+.post-pagination /deep/ .ngx-pagination{
+    padding: 0;
+}
+
+.post-pagination /deep/ .ngx-pagination .current {
+    background: #00897B;
+    cursor: pointer;
+}

@@ -1,0 +1,46 @@
+.form-container {
+    background:white;
+    position:fixed;
+}
+
+.welcome-container{
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+h1 + h3{
+    margin-top: 0;
+}
+
+h3{
+    font-size: 1.75em;
+}
+
+.signin-container{
+    border: 4px solid #00796B;
+    padding: 40px 20px;
+    border-radius: 15px;
+}
+.signup-link{
+    margin-top:30px; 
+    text-align: center;
+}
+
+::ng-deep .social-login, ::ng-deep .email-login{
+    text-align: center;
+}
+
+.gmail{
+    padding: 0px;
+}
+
+@media (max-width: 600px) {
+    #page {
+        padding:1em;
+    }
+    #toolbar {
+        width:90%;
+        margin-left: -45%;
+    }
+
+}

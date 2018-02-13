@@ -1,0 +1,18 @@
+<div class="searcherBackground">
+    <mat-card class="searcherBox">
+        <h1 class="searcherBoxTittle">Descubre nuevas actividades</h1>
+            <form class="row" action="submit" >
+                <mat-form-field class="col s12 m9" >
+                    <input matInput 
+                        [formControl]="searcherFormControl"
+                        placeholder="Actividad, material, categoria o palabra clave" 
+                        type="text" >
+                </mat-form-field>
+                <button mat-raised-button class="col s12 m3 searchButton" 
+                        type="submit" 
+                        [disabled]="!searcherFormControl.value"
+                        (click)=searchPosts() 
+                        color="primary">Buscar</button>
+            </form>
+    </mat-card>
+</div>

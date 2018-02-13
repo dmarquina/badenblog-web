@@ -1,0 +1,35 @@
+<div class="row">
+    <section>
+        <app-searcher (searchEvent)='handleSearchEvent($event)' [searcherFormControl]=searcherFormControl></app-searcher>
+        <article *ngIf="!nopostsFound || pendingRequest" class="col m10 push-m1 s12" >
+            <div *ngIf="inSearch">
+
+
+                <div *ngIf="totalItems===1;then oneMatch else moreMatches"></div>
+
+                <ng-template #oneMatch>Se encontró {{totalItems}} actividad para</ng-template>
+                <ng-template #moreMatches>Se encontraron {{totalItems}} actividades para</ng-template>
+
+                <button mat-button color="primary"
+                        type="submit" 
+                        (click)=clearFilters() >{{searchField}}</button>
+            </div>
+            <div class="col push-s5">
+                <mat-progress-spinner *ngIf="pendingRequest" 
+                                        [mode]="progressspinnerMode">
+                </mat-progress-spinner>
+            </div>
+            <app-postscontainer [hidden]="pendingRequest" (currentPage)="handleCurrentPage($event)"
+                                [posts]="posts" 
+                                [totalItems]="totalItems" 
+                                [itemsPerPage]="itemsPerPage">
+            </app-postscontainer>
+        </article>        
+        <div *ngIf="nopostsFound && !pendingRequest" class="row col m10 push-m1 s12">
+            No se encontraron actividades para
+            <button mat-button color="primary"
+                    type="submit" 
+                    (click)=clearFilters() >{{searchField}}</button>
+        </div>
+    </section>
+</div>

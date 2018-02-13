@@ -1,0 +1,15 @@
+<ul>  
+  <li class="col m12 l6 xl6" 
+      *ngFor="let post of posts 
+              | paginate: { 
+                  itemsPerPage: itemsPerPage, 
+                  currentPage: p, 
+                  totalItems: totalItems }">
+    <post [post] = "post"></post>
+  </li> 
+</ul>
+<pagination-controls *ngIf="posts" class="post-pagination col s12 m12" 
+                      previousLabel="Anterior"
+                      nextLabel="Siguiente"
+                      (pageChange)="p = pageChanged($event)">
+</pagination-controls>

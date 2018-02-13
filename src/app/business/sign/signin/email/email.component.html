@@ -1,0 +1,14 @@
+<article class="email-login col l6 m12 s12">
+  <h3>Con tu Email</h3>
+  <form #formData='ngForm' (ngSubmit)="login()">
+    <mat-form-field class="col m12 s12">
+      <input matInput  placeholder="Correo electrónico" type="email" [(ngModel)]="email" name="email" required>
+    </mat-form-field>
+    
+    <mat-form-field class="col m12 s12">
+      <input matInput  placeholder="Contraseña" type="password"[(ngModel)]="password" name="password" required>
+    </mat-form-field>
+    
+    <button mat-raised-button class="col m12 s12 signin-button" type="submit" [disabled]="false" >Inicia sesión</button>
+  </form>
+</article>

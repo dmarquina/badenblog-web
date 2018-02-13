@@ -1,0 +1,19 @@
+<a className='postBoxReference' href="facebook.com" target="about_blank">
+    <mat-card class="post postBox">
+        <mat-card-title>
+            {{ post.postName }}
+        </mat-card-title>
+        <mat-card-content class="post-description-content">
+            <p>{{ post.description | truncate : 140 }}</p>
+        </mat-card-content>
+    <!--<hr>
+        <mat-card-actions class="card-actions row">
+            <span class="col s3 m4 l3 push-l9 push-m8 push-s9">
+                <button  class="heart-button col m6" (click)="likeMe()">   
+                    <mat-icon class="scout-purple">{{post.icon}}</mat-icon>
+            </button>
+            <p class="col m6 likes-quantity">12</p>
+        </span>
+    </mat-card-actions>-->
+    </mat-card>
+</a>

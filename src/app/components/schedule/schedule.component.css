@@ -1,0 +1,41 @@
+.article-container{
+    position: fixed;
+}
+
+.panel{
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    border: 1px solid rgba(0,0,0,.03);
+    box-shadow: 0 2px 2px rgba(0,0,0,.24), 0 0 2px rgba(0,0,0,.12);
+    margin: 4px;
+    text-align: left;
+}
+
+.panel-heading{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 8px 10px;
+    color: rgba(0,0,0,.8);
+    background: #ECEFF1;
+}
+
+.panel-body{
+    overflow: scroll;
+    max-height: 470px;
+    padding: 5px 10px;
+    font-size: 14px;
+    background-color: #fff; 
+}
+
+.panel-body::-webkit-scrollbar {
+    width: 1em;
+}
+ 
+.panel-body::-webkit-scrollbar-track {
+    display: none;
+}
+ 
+.panel-body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}

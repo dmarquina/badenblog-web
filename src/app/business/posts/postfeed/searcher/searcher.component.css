@@ -1,0 +1,22 @@
+.searcherBackground {
+    margin: 0 auto 20px auto;
+    padding: 30px 0 40px 0;
+    text-align: center;
+    background-color: #00897B;
+}
+
+.searcherBox {
+    width:75%;
+    display: inline-block;
+    padding: 15px 35px 40px;
+}
+.searcherBoxTittle {
+    color: #9E9E9E;
+    margin-top: 10px;
+    margin-bottom: 30p;
+    text-align: center;
+}
+
+.searchButton {
+    margin-top: 10px;
+}
