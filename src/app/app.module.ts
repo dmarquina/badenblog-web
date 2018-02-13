@@ -29,14 +29,11 @@ import { AppComponent } from './components/app/app.component';
 import { SignupComponent } from './business/sign/signup/signup.component';
 import { FacebookComponent } from './business/sign/facebooklogin/facebook.component';
 import { EmailComponent } from './business/sign/signin/email/email.component';
-import { MembersComponent } from './components/members/members.component';
 import { NavigationbarComponent } from './components/navigationbar/navigationbar.component';
 import { PostscontainerComponent } from './business/posts/postfeed/postscontainer/postscontainer.component';
 import { PostComponent } from './business/posts/postfeed/post/post.component';
-import { ScheduleComponent } from './components/schedule/schedule.component';
-import { ActivityComponent } from './components/activity/activity.component';
 
-import { TruncatePipe } from './pipes/truncate';
+import { TruncatePipe } from './commons/pipes/truncate';
 import { SearcherComponent } from './business/posts/postfeed/searcher/searcher.component';
 import { PostfeedComponent } from './business/posts/postfeed/postfeed.component';
 import { SigninComponent } from './business/sign/signin/signin.component';
@@ -48,14 +45,11 @@ import { RestController } from './commons/util/rest.controller';
 
     AppComponent,
     SignupComponent,
-    MembersComponent,
     EmailComponent,
     FacebookComponent,
     NavigationbarComponent,
     PostscontainerComponent,
     PostComponent,
-    ScheduleComponent,
-    ActivityComponent,
     SearcherComponent,
     PostfeedComponent,
     SigninComponent

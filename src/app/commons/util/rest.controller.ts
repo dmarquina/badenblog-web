@@ -5,7 +5,7 @@ import { _throw } from 'rxjs/observable/throw';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { catchError, map, tap } from 'rxjs/operators';
-import {environment} from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 export interface IRestItems <T> {
