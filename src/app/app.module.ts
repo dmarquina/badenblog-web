@@ -13,23 +13,24 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { FacebookModule } from 'ngx-facebook';
-import { DndModule } from 'ng2-dnd';
 import { NgxPaginationModule } from 'ngx-pagination'; 
+import { TagInputModule } from 'ngx-chips';
 import 'hammerjs';
-
+ 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { routes } from './app.routes';
 import { LoginGuard } from './guards/login.guard';
 import { LoggedGuard } from './guards/logged.guard';
 
-import { AppComponent } from './components/app/app.component';
+import { AppComponent } from './commons/components/app/app.component';
 import { SignupComponent } from './business/sign/signup/signup.component';
 import { FacebookComponent } from './business/sign/facebooklogin/facebook.component';
 import { EmailComponent } from './business/sign/signin/email/email.component';
-import { NavigationbarComponent } from './components/navigationbar/navigationbar.component';
+import { NavigationbarComponent } from './commons/components/navigationbar/navigationbar.component';
 import { PostscontainerComponent } from './business/posts/postfeed/postscontainer/postscontainer.component';
 import { PostComponent } from './business/posts/postfeed/post/post.component';
 
@@ -38,6 +39,8 @@ import { SearcherComponent } from './business/posts/postfeed/searcher/searcher.c
 import { PostfeedComponent } from './business/posts/postfeed/postfeed.component';
 import { SigninComponent } from './business/sign/signin/signin.component';
 import { RestController } from './commons/util/rest.controller';
+import { NewpostComponent } from './business/posts/newpost/newpost.component';
+import { MaterialchipsComponent } from './commons/components/materialchips/materialchips.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +55,9 @@ import { RestController } from './commons/util/rest.controller';
     PostComponent,
     SearcherComponent,
     PostfeedComponent,
-    SigninComponent
+    SigninComponent,
+    NewpostComponent,
+    MaterialchipsComponent
   ],
   imports: [
     BrowserModule,
@@ -61,9 +66,9 @@ import { RestController } from './commons/util/rest.controller';
     HttpModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    DndModule.forRoot(),
     CommonModule,
     NgxPaginationModule,
+    TagInputModule,
     FacebookModule.forRoot(),
     MatCardModule,
     MatFormFieldModule,
@@ -73,6 +78,7 @@ import { RestController } from './commons/util/rest.controller';
     MatIconModule,
     MatMenuModule,
     MatProgressSpinnerModule,
+    MatCheckboxModule,
     routes
   ],
   providers: [LoginGuard,

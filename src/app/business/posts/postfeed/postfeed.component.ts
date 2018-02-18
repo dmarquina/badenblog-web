@@ -27,8 +27,13 @@ export class PostfeedComponent implements OnInit {
   
   ngOnInit() {
     this.getPosts();
+    this.searcherFormControl.valueChanges.subscribe( x => {
+      if(x===''){
+        this.getPosts();
+      }
+    })
   }
-
+  
   getPosts(page=0){
     this.pendingRequest=true;
     this.inSearch=false;

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Userprofile } from '../../interfaces/userprofile';
-import { AuthenticationService } from './../../services/authentication.service';
+import { Userprofile } from '../../../interfaces/userprofile';
+import { AuthenticationService } from './../../../services/authentication.service';
 import { FacebookService } from 'ngx-facebook';
 import { Router } from '@angular/router';
 

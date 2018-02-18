@@ -1,6 +1,8 @@
-<mat-toolbar class="navBar" color="primary">
+<mat-toolbar color="primary">
         <span><a class="brand" routerLink="/">Badenblog</a></span>
             <span class="spacer"></span>
+            <button mat-button class="col s12 m3" 
+                        type="submit" >Publicar actividad</button>
             <button mat-button class="userButton" [matMenuTriggerFor]="menu">
                 <mat-icon >account_circle</mat-icon>
                 <span *ngIf="isLogin()">{{currentUser.name}}  {{currentUser.lastName}}</span>
