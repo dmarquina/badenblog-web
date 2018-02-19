@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-materialchips',
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MaterialchipsComponent implements OnInit {
 
-  items = ['Pizza', 'Pasta', 'Parmesan'];
+  @Input() items ;
   constructor() {}
 
   ngOnInit() {

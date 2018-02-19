@@ -7,8 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewpostComponent implements OnInit {
 
-  age1=true;
-  age2=true;
+  age1=false;
+  age2=false;
+  age3=false;
+  age4=false;
+
+  items = ['Pizza', 'Pasta', 'Parmesan'];
   constructor() { }
 
   ngOnInit() {

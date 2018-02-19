@@ -1,1 +1,6 @@
-<tag-input [(ngModel)]='items' [theme]="'ngxchip-theme'"></tag-input>
+<tag-input 
+    [(ngModel)]='items' 
+    [placeholder]="'+Nuevo material'" 
+    [secondaryPlaceholder]="'¿Qué materiales usarás?'" 
+    [maxItems] ="10">
+</tag-input>

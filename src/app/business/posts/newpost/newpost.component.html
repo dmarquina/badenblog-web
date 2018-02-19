@@ -12,15 +12,29 @@
               <textarea matInput placeholder="Describe tu actividad" matTextareaAutosize matAutosizeMinRows="2"
               matAutosizeMaxRows="5"></textarea>
             </mat-form-field>
+            <h5 class="title-form">Categorías</h5>
+            <section class="row">
+              <mat-checkbox class="example-margin col m4 s6" color="primary" name="age1" [(ngModel)]="age1">Círculo</mat-checkbox>
+              <mat-checkbox class="example-margin col m4 s6" color="primary" name="age2" [(ngModel)]="age2">Grupos grandes</mat-checkbox>
+              <mat-checkbox class="example-margin col m4 s6" color="primary" name="age3" [(ngModel)]="age3">Grupos pequeños</mat-checkbox>
+              <mat-checkbox class="example-margin col m4 s6" color="primary" name="age4" [(ngModel)]="age4">Campamento</mat-checkbox>
+              <mat-checkbox class="example-margin col m4 s6" color="primary" name="age4" [(ngModel)]="age4">Activo</mat-checkbox>
+              <mat-checkbox class="example-margin col m4 s6" color="primary" name="age4" [(ngModel)]="age4">Creatividad</mat-checkbox>
+              <mat-checkbox class="example-margin col m4 s6" color="primary" name="age4" [(ngModel)]="age4">Reflexivo</mat-checkbox>
+            </section>
           </div>
           <div class="col m6">
-                <h5 class="title-form">Edades</h5>
-                <section class="example-section">
-                  <mat-checkbox class="example-margin col m3 s6" color="primary" [(ngModel)]="age1">7 - 10</mat-checkbox>
-                  <mat-checkbox class="example-margin col m3 s6" color="primary" [(ngModel)]="age1">10 - 14</mat-checkbox>
-                  <mat-checkbox class="example-margin col m3 s6" color="primary" [(ngModel)]="age1">15 - 17</mat-checkbox>
-                  <mat-checkbox class="example-margin col m3 s6" color="primary" [(ngModel)]="age1">18+</mat-checkbox>
-                </section>
+            <div class="row">
+              <h5 class="title-form">Materiales</h5>
+              <app-materialchips class="example-margin col s12" [items]="items"></app-materialchips>      
+            </div>
+            <h5 class="title-form">Edades</h5>
+            <section class="row">
+              <mat-checkbox class="example-margin col m3 s6" color="primary" name="age1" [(ngModel)]="age1">7 - 10</mat-checkbox>
+              <mat-checkbox class="example-margin col m3 s6" color="primary" name="age2" [(ngModel)]="age2">10 - 14</mat-checkbox>
+              <mat-checkbox class="example-margin col m3 s6" color="primary" name="age3" [(ngModel)]="age3">15 - 17</mat-checkbox>
+              <mat-checkbox class="example-margin col m3 s6" color="primary" name="age4" [(ngModel)]="age4">18+</mat-checkbox>
+            </section>
           </div>
         </form>
       </mat-card-content>
