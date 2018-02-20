@@ -21,6 +21,10 @@ export class NavigationbarComponent implements OnInit {
     this.router.navigate(['/iniciarSesion'])
   }
 
+  goToNewPost(){
+    this.router.navigate(['/newPost'])
+  }
+
   isLogin(){
     this.currentUser = localStorage.getItem('currentUser')?JSON.parse(localStorage.getItem('currentUser')):null;
     return this.currentUser?true:false; 

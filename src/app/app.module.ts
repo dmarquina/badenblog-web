@@ -14,6 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSliderModule } from '@angular/material/slider';
 
 import { FacebookModule } from 'ngx-facebook';
 import { NgxPaginationModule } from 'ngx-pagination'; 
@@ -79,6 +80,7 @@ import { MaterialchipsComponent } from './commons/components/materialchips/mater
     MatMenuModule,
     MatProgressSpinnerModule,
     MatCheckboxModule,
+    MatSliderModule,
     routes
   ],
   providers: [LoginGuard,

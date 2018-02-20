@@ -1,6 +1,5 @@
 import { Component, OnInit,Input, Output, EventEmitter } from '@angular/core';
-import { PostfeedResponse } from '../../../../interfaces/post';
-import { Post } from '../../../../interfaces/post';
+import { IPost } from '../../../../interfaces/post';
 
 @Component({
   selector: 'app-postscontainer',
@@ -8,7 +7,7 @@ import { Post } from '../../../../interfaces/post';
   styleUrls: ['./postscontainer.component.css']
 })
 export class PostscontainerComponent implements OnInit {
-  @Input() posts:Post[];
+  @Input() posts:IPost[];
   @Input() itemsPerPage:number;
   @Input() totalItems:number;
   

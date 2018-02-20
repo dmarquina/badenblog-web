@@ -12,6 +12,7 @@ import { SignupComponent } from './business/sign/signup/signup.component';
 
 export const router: Routes = [
     { path: '', component: NewpostComponent },
+    { path: 'newPost', component: NewpostComponent },
     { path: 'postfeed', component: PostfeedComponent },
     { path: 'iniciarSesion', component: SigninComponent,canActivate: [LoggedGuard] },
     { path: 'registrarse', component: SignupComponent,canActivate: [LoggedGuard] }

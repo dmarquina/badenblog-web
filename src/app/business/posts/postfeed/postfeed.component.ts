@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from "@angular/forms";
 import { Http } from '@angular/http';
-import { PostfeedResponse } from '../../../interfaces/post';
-import { Post } from '../../../interfaces/post';
+import { IPostfeed } from '../../../interfaces/post';
+import { IPost } from '../../../interfaces/post';
 import { RestController } from '../../../commons/util/rest.controller';
 
 @Component({
@@ -13,8 +13,8 @@ import { RestController } from '../../../commons/util/rest.controller';
 export class PostfeedComponent implements OnInit {
   searcherFormControl = new FormControl(null);
   searchField='';
-  postfeedResponse: PostfeedResponse;
-  posts:Post[];
+  postfeed: IPostfeed;
+  posts:IPost[];
   itemsPerPage:number;
   totalItems:number;
   pendingRequest=false;
@@ -37,14 +37,14 @@ export class PostfeedComponent implements OnInit {
   getPosts(page=0){
     this.pendingRequest=true;
     this.inSearch=false;
-    this._rest.get<PostfeedResponse>(`/post/actives?page=${page}`)
+    this._rest.get<IPostfeed>(`/post/actives?page=${page}`)
       .subscribe(
         data=>{
           if(data){
-          this.postfeedResponse=data;
-          this.posts=this.postfeedResponse.content;
-          this.totalItems=this.postfeedResponse.totalElements;
-          this.itemsPerPage=this.postfeedResponse.size;
+          this.postfeed=data;
+          this.posts=this.postfeed.content;
+          this.totalItems=this.postfeed.totalElements;
+          this.itemsPerPage=this.postfeed.size;
           this.pendingRequest=false;
           this.nopostsFound=false;
           }else{
@@ -60,15 +60,15 @@ export class PostfeedComponent implements OnInit {
   searchPosts(searchField, page=0){
     this.pendingRequest=true;
     this.inSearch=false;
-    this._rest.get<PostfeedResponse>(`/post/search/${searchField}?page=${page}`)
+    this._rest.get<IPostfeed>(`/post/search/${searchField}?page=${page}`)
     .subscribe(
       data=>{
         if(data){
           this.nopostsFound=false;
-          this.postfeedResponse=data;
-          this.posts=this.postfeedResponse.content;
-          this.totalItems=this.postfeedResponse.totalElements;
-          this.itemsPerPage=this.postfeedResponse.size;
+          this.postfeed=data;
+          this.posts=this.postfeed.content;
+          this.totalItems=this.postfeed.totalElements;
+          this.itemsPerPage=this.postfeed.size;
           this.inSearch=true;
         }else{
             this.nopostsFound=true;

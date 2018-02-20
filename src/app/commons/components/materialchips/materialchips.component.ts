@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-materialchips',
@@ -6,11 +6,19 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./materialchips.component.css']
 })
 export class MaterialchipsComponent implements OnInit {
-
+  @Output() itemAddedEvent = new EventEmitter();
+  @Output() itemRemovedEvent = new EventEmitter();
   @Input() items ;
+
   constructor() {}
 
-  ngOnInit() {
+  ngOnInit() {}
+  
+  onItemAdded(event){
+    this.itemAddedEvent.emit(event);
   }
   
+  onItemRemoved(event){
+    this.itemRemovedEvent.emit(event);
+  }
 }

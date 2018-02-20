@@ -1,6 +1,6 @@
 import { Userprofile } from '../interfaces/userprofile';
 
-export interface Post {
+export interface IPost {
     idPost : number,
 	postName : String,
 	description : String,
@@ -9,8 +9,8 @@ export interface Post {
 	categories : String[]
 }
 
-export interface PostfeedResponse {
-	content: Post[],
+export interface IPostfeed {
+	content: IPost[],
 	last: false,
     totalPages: 2,
     totalElements: 12,
@@ -19,4 +19,15 @@ export interface PostfeedResponse {
     sort: null,
     first: true,
     numberOfElements: 10
+}
+
+export interface INewpost {
+    post: IPost,
+    materials: String[],
+    categories: ICategory[]
+}
+
+export interface ICategory{
+    idCategory:number,
+    name:String
 }

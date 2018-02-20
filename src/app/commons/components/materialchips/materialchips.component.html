@@ -2,5 +2,8 @@
     [(ngModel)]='items' 
     [placeholder]="'+Nuevo material'" 
     [secondaryPlaceholder]="'¿Qué materiales usarás?'" 
-    [maxItems] ="10">
+    [maxItems] ="10"
+    (onAdd)="onItemAdded($event)"
+    (onRemove)="onItemRemoved($event)"
+    >
 </tag-input>
