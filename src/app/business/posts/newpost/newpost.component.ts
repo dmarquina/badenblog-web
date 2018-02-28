@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ICategory, INewpost } from '../../../interfaces/post'
+import { ICategory, INewpost, IPost } from '../../../interfaces/post'
 import { Router } from '@angular/router';
 import { RestController } from '../../../commons/util/rest.controller';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-newpost',
@@ -12,13 +13,11 @@ export class NewpostComponent implements OnInit {
   newPost:INewpost= <INewpost> {};
   categories:ICategory[];
 
-  age1=false;
-  age2=false;
-  age3=false;
-  age4=false;
-
   items = [];
-  
+
+  titleFormControl = new FormControl(null,Validators.required);
+  descriptionFormControl = new FormControl(null,Validators.required);
+
   constructor(private router: Router,private _rest : RestController ) { }
 
   ngOnInit() {
@@ -30,10 +29,7 @@ export class NewpostComponent implements OnInit {
     this._rest.get<ICategory[]>('/category/all')
     .subscribe(
       data=>{
-        if(data){
-          console.log(data)
-          this.categories=data.content;
-        }
+        this.categories=data;
       },
       error => {
         this.showError();
@@ -43,6 +39,9 @@ export class NewpostComponent implements OnInit {
   }
   
   publishPost(){
+    this.newPost.title=this.titleFormControl.value
+    this.newPost.description=this.descriptionFormControl.value
+    this.newPost.categories = this.categories.filter(c => c.checked).map(c=> {delete c['checked'] ; return c;});
     console.log(this.newPost);
   }
   

@@ -6,32 +6,22 @@
         <form class="row">
           <div class="col m6">
             <mat-form-field class="full-width" >
-              <input matInput placeholder="Título">
+              <input matInput placeholder="Título" [formControl]="titleFormControl">
             </mat-form-field>
             <mat-form-field class="full-width">
               <textarea matInput placeholder="Describe tu actividad" matTextareaAutosize matAutosizeMinRows="2"
-              matAutosizeMaxRows="5"></textarea>
+              matAutosizeMaxRows="5" [formControl]="descriptionFormControl"></textarea>
             </mat-form-field>
             <h5 class="title-form">Categorías</h5>
-            <section class="row" *ngFor="let cat of categories">
+            <section *ngFor="let cat of categories">
               <mat-checkbox class="example-margin col m4 s6" color="primary" 
                             name="cat.idCategory" 
-                            [(ngModel)]="cat.idCategory">
+                            [(ngModel)]="cat.checked">
                             {{cat.name}}
               </mat-checkbox>
             </section>
           </div>
           <div class="col m6">
-            <h5 class="title-form">Edad mínima</h5>
-            <mat-slider
-                class="col s12"
-                [max]="18"
-                [min]="7"
-                [step]="4"
-                [thumb-label]="true"
-                name="minAge"
-                [(ngModel)]="newPost.minAge">
-            </mat-slider>
             <div class="row">
               <h5 class="title-form">Materiales</h5>
               <app-materialchips class="example-margin col s12" 
@@ -39,6 +29,13 @@
                                   (itemRemovedEvent)='handleItemRemovedEvent($event)' 
                                   [items]="items"></app-materialchips>      
             </div>
+            <h5 class="title-form">Edad mínima</h5>
+            <mat-slider
+                class="col s12"
+                [max]="18" [min]="7"
+                [step]="4" [thumb-label]="true"
+                name="minAge" [(ngModel)]="newPost.minAge">
+            </mat-slider>
    
           </div>
         </form>

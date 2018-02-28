@@ -10,7 +10,7 @@ export interface IPost {
 }
 
 export interface IPostfeed {
-	content: IPost[],
+    content: IPost[],
 	last: false,
     totalPages: 2,
     totalElements: 12,
@@ -22,12 +22,15 @@ export interface IPostfeed {
 }
 
 export interface INewpost {
-    post: IPost,
+    title : String,
+    description : String,
+    minAge : String,
     materials: String[],
     categories: ICategory[]
 }
 
 export interface ICategory{
     idCategory:number,
-    name:String
+    name:String,
+    checked?:boolean;
 }
