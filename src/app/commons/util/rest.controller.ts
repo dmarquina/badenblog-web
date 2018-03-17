@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient,HttpResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { _throw } from 'rxjs/observable/throw';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
+import { IPost, Post } from '../../interfaces/post';
 
 const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 export interface IRestItems <T> {
@@ -46,6 +47,15 @@ export class RestController {
         catchError(this.handleError('get'))
       );
   }
+
+  getComments() : Observable<Post[]>{
+    const paramsRequest: any = {
+      headers: headers,
+    };
+    // ...using get request
+    return this.http.get<Post[]>(this._urlApi + `/post/all`);
+   
+  } 
 
   public post<T>(endpoint: string, body: Object, params: Object = {} ): Observable<T> {
     const paramsRequest: any = {

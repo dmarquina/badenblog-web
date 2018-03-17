@@ -9,6 +9,14 @@ export interface IPost {
 	categories : String[]
 }
 
+export interface Post {
+	name : String,
+	description : String,
+	minAge : number,
+    categories : String[],
+    materials : String[]
+}
+
 export interface IPostfeed {
     content: IPost[],
 	last: false,
@@ -26,11 +34,5 @@ export interface INewpost {
     description : String,
     minAge : String,
     materials: String[],
-    categories: ICategory[]
-}
-
-export interface ICategory{
-    idCategory:number,
-    name:String,
-    checked?:boolean;
+    categories: String[]
 }

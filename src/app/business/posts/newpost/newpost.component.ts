@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ICategory, INewpost, IPost } from '../../../interfaces/post'
+import { INewpost, IPost } from '../../../interfaces/post';
+import { ICategory } from '../../../interfaces/category';
 import { Router } from '@angular/router';
 import { RestController } from '../../../commons/util/rest.controller';
 import { FormControl, Validators } from '@angular/forms';
@@ -26,13 +27,13 @@ export class NewpostComponent implements OnInit {
   }
   
   getCategories(){
-    this._rest.get<ICategory[]>('/category/all')
+    this._rest.get<ICategory[]>('/category/')
     .subscribe(
       data=>{
         this.categories=data;
       },
       error => {
-        this.showError();
+        this.showError(error);
       }
     )
     
@@ -41,7 +42,7 @@ export class NewpostComponent implements OnInit {
   publishPost(){
     this.newPost.title=this.titleFormControl.value
     this.newPost.description=this.descriptionFormControl.value
-    this.newPost.categories = this.categories.filter(c => c.checked).map(c=> {delete c['checked'] ; return c;});
+    this.newPost.categories = this.categories.filter(c => c.checked).map(c=> {delete c['checked'] ; return c.name;});
     console.log(this.newPost);
   }
   
@@ -60,7 +61,7 @@ export class NewpostComponent implements OnInit {
     this.router.navigate(['/postfeed'])
   }
 
-  showError(){
-    console.log('hubo un error');
+  showError(error){
+    console.log(error);
   }
 }

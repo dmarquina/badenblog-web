@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from "@angular/forms";
 import { Http } from '@angular/http';
 import { IPostfeed } from '../../../interfaces/post';
-import { IPost } from '../../../interfaces/post';
+import { IPost, Post } from '../../../interfaces/post';
 import { RestController } from '../../../commons/util/rest.controller';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-postfeed',
@@ -14,7 +15,7 @@ export class PostfeedComponent implements OnInit {
   searcherFormControl = new FormControl(null);
   searchField='';
   postfeed: IPostfeed;
-  posts:IPost[];
+  posts:Post;
   itemsPerPage:number;
   totalItems:number;
   pendingRequest=false;
@@ -37,28 +38,20 @@ export class PostfeedComponent implements OnInit {
   getPosts(page=0){
     this.pendingRequest=true;
     this.inSearch=false;
-    this._rest.get<IPostfeed>(`/post/actives?page=${page}`)
+    this._rest.getComments()
+    //.map(d=>{console.log(d);return  d;})
       .subscribe(
         data=>{
-          if(data){
-          this.postfeed=data;
-          this.posts=this.postfeed.content;
-          this.totalItems=this.postfeed.totalElements;
-          this.itemsPerPage=this.postfeed.size;
-          this.pendingRequest=false;
-          this.nopostsFound=false;
-          }else{
-            this.nopostsFound=true;
-          }
+            console.log(data);
         },
         error => {
-          this.showError();
+          this.showError(error);
         }
       )
   }
 
   searchPosts(searchField, page=0){
-    this.pendingRequest=true;
+   /* this.pendingRequest=true;
     this.inSearch=false;
     this._rest.get<IPostfeed>(`/post/search/${searchField}?page=${page}`)
     .subscribe(
@@ -78,7 +71,7 @@ export class PostfeedComponent implements OnInit {
         error => {
           this.showError();
         }
-      )
+    )*/
   }
 
   clearFilters(){
@@ -101,8 +94,8 @@ export class PostfeedComponent implements OnInit {
     this.searchField=this.searcherFormControl.value;
     this.searchPosts(this.searcherFormControl.value);
   }
-  showError() {
-     console.log("Error");
+  showError(error) {
+     console.log(error);
   }
 
 }

@@ -15,7 +15,7 @@
             <h5 class="title-form">Categorías</h5>
             <section *ngFor="let cat of categories">
               <mat-checkbox class="example-margin col m4 s6" color="primary" 
-                            name="cat.idCategory" 
+                            name="cat.id" 
                             [(ngModel)]="cat.checked">
                             {{cat.name}}
               </mat-checkbox>
@@ -33,7 +33,7 @@
             <mat-slider
                 class="col s12"
                 [max]="18" [min]="7"
-                [step]="4" [thumb-label]="true"
+                [step]="4" [thumbLabel]="true"
                 name="minAge" [(ngModel)]="newPost.minAge">
             </mat-slider>
    
