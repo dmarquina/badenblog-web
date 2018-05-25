@@ -22,7 +22,7 @@ export class NavigationbarComponent implements OnInit {
   }
 
   goToNewPost(){
-    this.router.navigate(['/newPost'])
+    this.router.navigate(['/newpost'])
   }
 
   isLogin(){

@@ -15,6 +15,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatChipsModule } from '@angular/material/chips';
 
 import { FacebookModule } from 'ngx-facebook';
 import { NgxPaginationModule } from 'ngx-pagination'; 
@@ -42,6 +43,7 @@ import { SigninComponent } from './business/sign/signin/signin.component';
 import { RestController } from './commons/util/rest.controller';
 import { NewpostComponent } from './business/posts/newpost/newpost.component';
 import { MaterialchipsComponent } from './commons/components/materialchips/materialchips.component';
+import { DetailpostComponent } from './business/posts/detailpost/detailpost.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,8 @@ import { MaterialchipsComponent } from './commons/components/materialchips/mater
     PostfeedComponent,
     SigninComponent,
     NewpostComponent,
-    MaterialchipsComponent
+    MaterialchipsComponent,
+    DetailpostComponent
   ],
   imports: [
     BrowserModule,
@@ -81,6 +84,7 @@ import { MaterialchipsComponent } from './commons/components/materialchips/mater
     MatProgressSpinnerModule,
     MatCheckboxModule,
     MatSliderModule,
+    MatChipsModule,
     routes
   ],
   providers: [LoginGuard,

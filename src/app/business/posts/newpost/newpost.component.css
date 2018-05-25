@@ -2,6 +2,10 @@
     margin-top:10px; 
 }
 
+.fix-form-title{
+    margin-top: 0;
+}
+
 .button-position{
     text-align: right !important;
 }

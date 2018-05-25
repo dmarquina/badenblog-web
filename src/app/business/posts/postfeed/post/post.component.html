@@ -1,7 +1,7 @@
-<a className='postBoxReference' href="facebook.com" target="about_blank">
+<a className='postBoxReference' [routerLink]="['/detailpost' , post.id]">
     <mat-card class="post postBox">
         <mat-card-title>
-            {{ post.postName }}
+            {{ post.name }}
         </mat-card-title>
         <mat-card-content class="post-description-content">
             <p>{{ post.description | truncate : 140 }}</p>

@@ -1,38 +1,27 @@
 import { Userprofile } from '../interfaces/userprofile';
 
 export interface IPost {
-    idPost : number,
-	postName : String,
+    id : number,
+	name : String,
 	description : String,
 	minAge : String,
-	maxAge : Date,
-	categories : String[]
+    categories : String[]
+    creationDate: Date
 }
 
 export interface Post {
-	name : String,
-	description : String,
-	minAge : number,
-    categories : String[],
-    materials : String[]
-}
-
-export interface IPostfeed {
-    content: IPost[],
-	last: false,
-    totalPages: 2,
-    totalElements: 12,
-    size: 10,
-    number: 0,
-    sort: null,
-    first: true,
-    numberOfElements: 10
+	name?: String,
+	description?: String,
+    minAge?: number,
+    creationDate?: Date,
+    categories?: String[],
+    materials?: String[]
 }
 
 export interface INewpost {
-    title : String,
+    name : String,
     description : String,
-    minAge : String,
+    minAge : number,
     materials: String[],
-    categories: String[]
+    categories: ICategory[]
 }

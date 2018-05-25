@@ -35,27 +35,27 @@ export class RestController {
   private _urlApi = environment.urlApi; // URL to web api
   constructor(private http: HttpClient) {}
 
-  public get<T>(endpoint: string, params: Object = {} ): Observable<T> {
-   const paramsRequest: any = {
-     headers: headers,
-     params: params
-   };
-    return this.http.get(this._urlApi + endpoint, paramsRequest)
-      .pipe(
-        map( obj => obj ),
-        tap(heroes => this.log('fetched data')),
-        catchError(this.handleError('get'))
-      );
+  public getPaginationResponse(endpoint: string, pageState ) {
+    let paramPageState ='';
+    if(pageState!=''){
+      paramPageState = '/?pageState='+pageState;
+    }
+    return this.http.get<any>(this._urlApi + endpoint + paramPageState
+    ,{observe : 'response'});
   }
 
-  getComments() : Observable<Post[]>{
+  public get<T>(endpoint: string, params: Object = {} ): Observable<T> {
     const paramsRequest: any = {
       headers: headers,
+      params: params
     };
-    // ...using get request
-    return this.http.get<Post[]>(this._urlApi + `/post/all`);
-   
-  } 
+     return this.http.get(this._urlApi + endpoint, paramsRequest)
+       .pipe(
+         map( obj => obj ),
+         tap(heroes => this.log('fetched data')),
+         catchError(this.handleError('get'))
+       );
+   }
 
   public post<T>(endpoint: string, body: Object, params: Object = {} ): Observable<T> {
     const paramsRequest: any = {

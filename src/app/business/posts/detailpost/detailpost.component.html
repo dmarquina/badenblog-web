@@ -1,0 +1,23 @@
+<div class="detail-post row">
+  <div class="col m8 s12 push-m2">
+    <mat-card>
+      <mat-card-content>
+       <h2>{{post.name}}</h2>
+       <p>{{post.description}}</p>
+       <h5 class="title-form">Edad mínima: </h5><p>{{post.minAge}} años</p>
+       <h5 class="title-form">Categorías</h5>
+       <mat-chip-list class="bottom-chiplist-space" >
+        <mat-chip color="primary" *ngFor="let category of post.categories" selected="true">{{category}}</mat-chip>
+      </mat-chip-list>
+       <h5 class="title-form">Materiales</h5>
+       <mat-chip-list class="bottom-chiplist-space" >
+        <mat-chip color="primary" *ngFor="let material of post.materials" selected="true">{{material}}</mat-chip>
+      </mat-chip-list>
+        </mat-card-content>
+        <mat-card-actions class="row button-position">
+            <button mat-raised-button class="col push-l10 l2 m12 s12" (click)="goBackPostFeed()">Regresar</button>
+          </mat-card-actions>
+      </mat-card>
+      
+  </div>
+</div>

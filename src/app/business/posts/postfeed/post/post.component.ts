@@ -9,8 +9,6 @@ export class PostComponent implements OnInit {
   @Input()
   post:any;
 
-  spaceScreens: Array<any>;
-
   constructor(){}
 
   likeMe() {

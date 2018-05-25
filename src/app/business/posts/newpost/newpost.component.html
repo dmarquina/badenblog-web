@@ -12,7 +12,7 @@
               <textarea matInput placeholder="Describe tu actividad" matTextareaAutosize matAutosizeMinRows="2"
               matAutosizeMaxRows="5" [formControl]="descriptionFormControl"></textarea>
             </mat-form-field>
-            <h5 class="title-form">Categorías</h5>
+            <h5 class="title-form fix-form-title">Categorías</h5>
             <section *ngFor="let cat of categories">
               <mat-checkbox class="example-margin col m4 s6" color="primary" 
                             name="cat.id" 
@@ -23,13 +23,13 @@
           </div>
           <div class="col m6">
             <div class="row">
-              <h5 class="title-form">Materiales</h5>
+              <h5 class="title-form fix-form-title">Materiales</h5>
               <app-materialchips class="example-margin col s12" 
                                   (itemAddedEvent)='handleItemAddedEvent($event)' 
                                   (itemRemovedEvent)='handleItemRemovedEvent($event)' 
                                   [items]="items"></app-materialchips>      
             </div>
-            <h5 class="title-form">Edad mínima</h5>
+            <h5 class="title-form fix-form-title">Edad mínima</h5>
             <mat-slider
                 class="col s12"
                 [max]="18" [min]="7"

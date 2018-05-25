@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from "@angular/forms";
 import { Http } from '@angular/http';
-import { IPostfeed } from '../../../interfaces/post';
 import { IPost, Post } from '../../../interfaces/post';
 import { RestController } from '../../../commons/util/rest.controller';
 import { Observable } from 'rxjs/Observable';
+import { ICategory } from '../../../interfaces/category';
 
 @Component({
   selector: 'app-postfeed',
@@ -14,19 +14,20 @@ import { Observable } from 'rxjs/Observable';
 export class PostfeedComponent implements OnInit {
   searcherFormControl = new FormControl(null);
   searchField='';
-  postfeed: IPostfeed;
-  posts:Post;
+  posts:Post[];
+  categories:ICategory[];
   itemsPerPage:number;
   totalItems:number;
   pendingRequest=false;
   nopostsFound=false;
   progressspinnerMode = 'indeterminate';
-  inSearch=false;
-  
+  pageState:string='';
+
   constructor(private _rest : RestController) { 
   }
   
   ngOnInit() {
+    this.getCategories();
     this.getPosts();
     this.searcherFormControl.valueChanges.subscribe( x => {
       if(x===''){
@@ -35,19 +36,51 @@ export class PostfeedComponent implements OnInit {
     })
   }
   
-  getPosts(page=0){
+  getCategories(){
+    this._rest.get<ICategory[]>('/category/')
+    .subscribe(
+      data=>{
+        this.categories=data;
+      },
+      error => {
+        this.showError(error);
+      }
+    )
+    
+  }
+  
+  getPosts(pageState=''){
     this.pendingRequest=true;
-    this.inSearch=false;
-    this._rest.getComments()
-    //.map(d=>{console.log(d);return  d;})
-      .subscribe(
-        data=>{
-            console.log(data);
-        },
-        error => {
-          this.showError(error);
+    this._rest.getPaginationResponse('/post/home/',pageState)
+    .subscribe(
+      data=>{
+        if(data){
+          if(data.headers.get('pageState')){
+            this.pageState = data.headers.get('pageState');
+          }else{
+            this.pageState = '';
+          }
+          if(data.body){
+            this.nopostsFound=false;
+            if(this.posts && this.posts.length){
+              this.posts = this.posts.concat(data.body);
+            }else{
+              this.posts = data.body;
+            }
+          }else{
+            this.nopostsFound=true;
+          }
         }
-      )
+        this.pendingRequest=false;
+      },
+      error => {
+        this.showError(error);
+      }
+    )
+  }
+
+  handleMoreItems(){
+    this.getPosts(this.pageState);
   }
 
   searchPosts(searchField, page=0){
@@ -55,19 +88,7 @@ export class PostfeedComponent implements OnInit {
     this.inSearch=false;
     this._rest.get<IPostfeed>(`/post/search/${searchField}?page=${page}`)
     .subscribe(
-      data=>{
-        if(data){
-          this.nopostsFound=false;
-          this.postfeed=data;
-          this.posts=this.postfeed.content;
-          this.totalItems=this.postfeed.totalElements;
-          this.itemsPerPage=this.postfeed.size;
-          this.inSearch=true;
-        }else{
-            this.nopostsFound=true;
-          }
-          this.pendingRequest=false;
-        },
+      
         error => {
           this.showError();
         }
