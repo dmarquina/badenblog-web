@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { INewpost, IPost } from '../../../interfaces/post';
+import { INewpost, IPostFeed } from '../../../interfaces/post';
 import { ICategory } from '../../../interfaces/category';
 import { Router } from '@angular/router';
 import { RestController } from '../../../commons/util/rest.controller';
 import { FormControl, Validators } from '@angular/forms';
+import swal from'sweetalert2';
 
 @Component({
   selector: 'app-newpost',
@@ -46,7 +47,7 @@ export class NewpostComponent implements OnInit {
     this.newPost.categories = this.categories
     .filter(c => c.checked)
     .map(c=> {
-      delete c['checked'] ;
+      delete c['checked'];
       return {
         id: c.id,
         name : c.name
@@ -59,7 +60,7 @@ export class NewpostComponent implements OnInit {
       this._rest.post<INewpost>('/post/',this.newPost)
       .subscribe(
         data=>{
-          console.log('holi  '+data)
+          swal('Registro exitoso',data.name , 'success');
         },
         error=>{
           this.showError(error);

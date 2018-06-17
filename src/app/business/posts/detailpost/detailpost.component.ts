@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Post } from '../../../interfaces/post';
+import { IPost } from '../../../interfaces/post';
 import { RestController } from '../../../commons/util/rest.controller';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class DetailpostComponent implements OnInit {
 
-  post:Post={};
+  post:IPost={};
 
   constructor(private route:ActivatedRoute, private router: Router,private _rest : RestController) { }
 
@@ -20,7 +20,7 @@ export class DetailpostComponent implements OnInit {
 
 
   getPost(id){
-    this._rest.get<Post>('/post/'+id)
+    this._rest.get<IPost>('/post/'+id)
     .subscribe(
       data=>{
         this.post=data;

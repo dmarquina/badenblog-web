@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from "@angular/forms";
 import { Http } from '@angular/http';
-import { IPost, Post } from '../../../interfaces/post';
+import { IPostFeed,IPost } from '../../../interfaces/post';
 import { RestController } from '../../../commons/util/rest.controller';
 import { Observable } from 'rxjs/Observable';
 import { ICategory } from '../../../interfaces/category';
@@ -14,19 +14,21 @@ import { ICategory } from '../../../interfaces/category';
 export class PostfeedComponent implements OnInit {
   searcherFormControl = new FormControl(null);
   searchField='';
-  posts:Post[];
+  posts:IPost[];
   categories:ICategory[];
   itemsPerPage:number;
   totalItems:number;
   pendingRequest=false;
   nopostsFound=false;
   progressspinnerMode = 'indeterminate';
+  postSource='';
   pageState:string='';
 
   constructor(private _rest : RestController) { 
   }
   
   ngOnInit() {
+    this.postSource='HOME';
     this.getCategories();
     this.getPosts();
     this.searcherFormControl.valueChanges.subscribe( x => {
@@ -50,6 +52,10 @@ export class PostfeedComponent implements OnInit {
   }
   
   getPosts(pageState=''){
+    if(this.postSource!='HOME'){
+      this.posts=[];
+      this.postSource='HOME';
+    }
     this.pendingRequest=true;
     this._rest.getPaginationResponse('/post/home/',pageState)
     .subscribe(
@@ -79,6 +85,43 @@ export class PostfeedComponent implements OnInit {
     )
   }
 
+  getPostsByCategory(pageState=''){
+    if(this.postSource!='CAT'){
+      this.posts=[];
+      this.postSource='CAT';
+    }
+    let categoryIds = this.categories
+    .filter(c => c.checked)
+    .map(c=> c.id);
+    if(categoryIds.length>0){
+      this.pendingRequest=true;
+      this._rest.postPaginationResponse('/category/posts/',pageState,categoryIds)
+      .subscribe(
+        data=>{
+          if(data){
+            if(data.headers.get('pageState')){
+              this.pageState = data.headers.get('pageState');
+            }else{
+              this.pageState = '';
+            }
+            if(data.body){
+              this.nopostsFound=false;
+              this.posts = data.body;
+            }else{
+              this.nopostsFound=true;
+            }
+          }
+          this.pendingRequest=false;
+        },
+        error => {
+          this.showError(error);
+        }
+      )
+    }else{
+      this.getPosts();
+    }  
+  }
+    
   handleMoreItems(){
     this.getPosts(this.pageState);
   }

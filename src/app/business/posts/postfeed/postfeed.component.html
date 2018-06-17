@@ -6,9 +6,11 @@
                 <h1 class="searcherBoxTittle">Descubre nuevas actividades</h1>
                     <h5 class="title-form fix-form-title">Categorías</h5>
                     <section *ngFor="let cat of categories">
-                    <mat-checkbox class="example-margin col m4 s6" color="primary" 
+                    <mat-checkbox class="example-margin col m4 s6" 
+                                    color="primary" 
                                     name="cat.id" 
-                                    [(ngModel)]="cat.checked">
+                                    [(ngModel)]="cat.checked"
+                                    (change)="getPostsByCategory()">
                                     {{cat.name}}
                     </mat-checkbox>
                     </section>

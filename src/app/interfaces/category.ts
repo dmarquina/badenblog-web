@@ -1,7 +1,7 @@
 export interface ICategory{
-    id:String,
-    name:String,
-    description:String,
-    state:String,
+    id:string,
+    name:string,
+    description:string,
+    state:string,
     checked?:boolean;
 }

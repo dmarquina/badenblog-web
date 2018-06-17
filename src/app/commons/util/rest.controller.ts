@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
-import { IPost, Post } from '../../interfaces/post';
+import { IPostFeed } from '../../interfaces/post';
 
 const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 export interface IRestItems <T> {
@@ -42,6 +42,15 @@ export class RestController {
     }
     return this.http.get<any>(this._urlApi + endpoint + paramPageState
     ,{observe : 'response'});
+  }
+
+  public postPaginationResponse(endpoint: string, pageState, body: Object) {
+    let paramPageState ='';
+    if(pageState!=''){
+      paramPageState = '/?pageState='+pageState;
+    }
+    return this.http.post<any>(this._urlApi + endpoint + paramPageState
+    ,{'categoryIds':body},{observe : 'response'});
   }
 
   public get<T>(endpoint: string, params: Object = {} ): Observable<T> {

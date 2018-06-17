@@ -1,27 +1,33 @@
 import { Userprofile } from '../interfaces/userprofile';
+import { ICategory } from './category';
 
-export interface IPost {
+export interface IPostFeed {
     id : number,
-	name : String,
-	description : String,
-	minAge : String,
-    categories : String[]
+	name : string,
+	description : string,
+	minAge : string,
+    categories : string[]
     creationDate: Date
 }
 
-export interface Post {
-	name?: String,
-	description?: String,
+export interface IPost {
+	name?: string,
+	description?: string,
     minAge?: number,
     creationDate?: Date,
-    categories?: String[],
-    materials?: String[]
+    categories?: string[],
+    materials?: string[]
 }
 
 export interface INewpost {
-    name : String,
-    description : String,
+    name : string,
+    description : string,
     minAge : number,
-    materials: String[],
-    categories: ICategory[]
+    materials: string[],
+    categories: ICategoryNewPost[]
+}
+
+export interface ICategoryNewPost{
+    id:string,
+    name:string
 }
