@@ -60,14 +60,14 @@ export class NewpostComponent implements OnInit {
       this._rest.post<INewpost>('/post/',this.newPost)
       .subscribe(
         data=>{
-          swal('Registro exitoso',data.name , 'success');
+          swal('¡Guardado exitosamente!','Gracias por enseñarnos '+this.newPost.name , 'success');
+          this.goBackFeed();
         },
         error=>{
           this.showError(error);
         }
       )
     }
-    console.log(this.newPost);
   }
   
   handleItemAddedEvent(ev){
@@ -82,20 +82,16 @@ export class NewpostComponent implements OnInit {
   }
 
   validateNewPost(newPost:INewpost){
-    let validated = true;
-    if(!newPost.name || newPost.name.trim()===""){
-      validated = false;
-      console.log("Título requerido");
-    }
-    if(!newPost.description || newPost.description.trim()===""){
-      validated = false;
-      console.log("Descripción requerida");
-    }
     if(!newPost.categories || newPost.categories.length==0){
-      validated = false;
-      console.log("Debes seleccionar al menos una categoría");
+      swal({
+        title: 'Oye...',
+        text: "Debes seleccionar al menos una categoría",
+        type: 'warning',
+        confirmButtonColor: '#00897b',
+      });
+      return false;
     }
-    return validated;
+    return true;
   }
 
   goBackFeed(){

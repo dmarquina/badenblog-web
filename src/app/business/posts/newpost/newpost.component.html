@@ -7,10 +7,16 @@
           <div class="col m6">
             <mat-form-field class="full-width" >
               <input matInput placeholder="Título" [formControl]="titleFormControl">
+              <mat-error *ngIf="!newPost.name">
+                Ingresa un título
+              </mat-error>
             </mat-form-field>
             <mat-form-field class="full-width">
               <textarea matInput placeholder="Describe tu actividad" matTextareaAutosize matAutosizeMinRows="2"
               matAutosizeMaxRows="5" [formControl]="descriptionFormControl"></textarea>
+              <mat-error *ngIf="!newPost.description">
+                Necesitamos una descripción
+              </mat-error>
             </mat-form-field>
             <h5 class="title-form fix-form-title">Categorías</h5>
             <section *ngFor="let cat of categories">
