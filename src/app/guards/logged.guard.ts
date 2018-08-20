@@ -4,18 +4,23 @@ import { Observable } from "rxjs/Rx";
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Injectable()
 export class LoggedGuard implements CanActivate {
+  authState: any = null;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router
+    ,private afAuth: AngularFireAuth) {
+    this.afAuth.authState.subscribe((auth) => {
+      this.authState = auth
+  });}
+
+  get authenticated(): boolean {
+    return this.authState !== null;
+  }
 
   canActivate() {
-    if (localStorage.getItem('currentUser')) {
-        this.router.navigate(['/']);
-        return false;
-    }else{
-      return true;
-    }
+    return this.authenticated;
   }
 }

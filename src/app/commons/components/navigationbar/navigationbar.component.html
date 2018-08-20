@@ -5,17 +5,17 @@
                         type="submit" >Publicar actividad</button>
             <button mat-button class="userButton" [matMenuTriggerFor]="menu">
                 <mat-icon >account_circle</mat-icon>
-                <span *ngIf="isLogin()">{{currentUser.name}}  {{currentUser.lastName}}</span>
+                <span>{{authService.currentUserDisplayName}}</span>
             </button>
         <mat-menu #menu="matMenu">
-            
-        <button *ngIf="!isLogin()" mat-menu-item id="navbar-menu" (click)="goToLogin()">
+
+        <button *ngIf="!authService.authenticated" mat-menu-item id="navbar-menu" (click)="goToSignIn()">
             <mat-icon>fingerprint</mat-icon>
             <span>Iniciar Sesión</span>
         </button>
-         <button *ngIf="isLogin()" mat-menu-item id="navbar-menu" (click)="logout()">
+         <button *ngIf="authService.authenticated" mat-menu-item id="navbar-menu" (click)="signOut()">
             <mat-icon>exit_to_app</mat-icon>
-            <span>Salir</span>
+            <span>Cerrar Sesión</span>
         </button>
         <!--
         <button mat-menu-item disabled>

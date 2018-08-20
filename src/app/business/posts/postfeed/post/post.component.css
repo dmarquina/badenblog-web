@@ -1,3 +1,12 @@
+a{
+    color:rgba(0, 0, 0, 0.87)
+}
+
+hr{
+   margin: 0px;
+   padding: 0px; 
+}
+
 .post{
     margin: 15px 0;
     padding: 24px 24px 12px 24px;
@@ -17,6 +26,7 @@
 
 .card-actions{
     margin-left: 0px;
+    margin-bottom: 0px !important;
 }
 
 .post-description-content{
@@ -26,8 +36,9 @@
 .likes-quantity{
     margin: 4px 0px;
     font-size: 14px;
-    font-weight: 100;
     padding: 0px 5px;
+    font-weight: bold;
+    color: #8f8f8f;
 }
 
 .heart-button{

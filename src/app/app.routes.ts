@@ -13,11 +13,11 @@ import { DetailpostComponent } from './business/posts/detailpost/detailpost.comp
 
 export const router: Routes = [
     { path: '', component: PostfeedComponent },
-    { path: 'newpost', component: NewpostComponent },
+    { path: 'newpost', component: NewpostComponent},
     { path: 'postfeed', component: PostfeedComponent },
     { path: 'detailpost/:id', component: DetailpostComponent },
-    { path: 'iniciarSesion', component: SigninComponent,canActivate: [LoggedGuard] },
-    { path: 'registrarse', component: SignupComponent,canActivate: [LoggedGuard] }
+    { path: 'iniciarSesion', component: SigninComponent},
+    { path: 'registrarse', component: SignupComponent}
 ]
 
 export const routes: ModuleWithProviders = RouterModule.forRoot(router);

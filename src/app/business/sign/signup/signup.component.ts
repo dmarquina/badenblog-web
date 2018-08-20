@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AuthenticationService } from './../../../services/authentication.service';
 import { UserService } from '../../../services/user.service';
 import { Userprofile } from '../../../interfaces/userprofile';
 
@@ -9,7 +8,7 @@ import { Userprofile } from '../../../interfaces/userprofile';
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css'],
-  providers:[UserService,AuthenticationService],
+  providers:[UserService],
 })
 
 export class SignupComponent implements OnInit {
@@ -19,8 +18,7 @@ export class SignupComponent implements OnInit {
   newUser : Userprofile;
   disableCreate=false;
   constructor(private router: Router, 
-              private userService : UserService,
-              private authService: AuthenticationService) {}
+              private userService : UserService) {}
 
   goToLogin(){
     let link = ['/iniciarSesion'];
@@ -44,7 +42,7 @@ export class SignupComponent implements OnInit {
                 this.password2 = "";
                 this.disableCreate=false;
               }else{
-                this.login(this.newUser.email , this.newUser.password)
+                //this.login(this.newUser.email , this.newUser.password)
                 this.clearNewUser();
               }
             },
@@ -53,7 +51,7 @@ export class SignupComponent implements OnInit {
     }
   }
 
-  login(email,password){
+  /*login(email,password){
     this.authService.login(email, password)
       .then(result => {
           if (result == true) {
@@ -72,7 +70,7 @@ export class SignupComponent implements OnInit {
         (err) => {
         this.error = err;
       });
-  }
+  }*/
 
   showSuccess() {
         console.log("Succes");

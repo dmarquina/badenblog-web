@@ -1,48 +1,41 @@
-import { Component, OnInit } from '@angular/core';
-import { Userprofile } from '../../../interfaces/userprofile';
-import { AuthenticationService } from './../../../services/authentication.service';
-import { FacebookService } from 'ngx-facebook';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Userprofile} from '../../../interfaces/userprofile';
+import {Router} from '@angular/router';
+import {UserService} from '../../../shared/services/user.service';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'navigationbar',
   templateUrl: './navigationbar.component.html',
-  styleUrls: ['./navigationbar.component.css'],
-  providers: [AuthenticationService]
+  styleUrls: ['./navigationbar.component.css']
 })
 export class NavigationbarComponent implements OnInit {
-  currentUser : Userprofile;
+  displayName: string;
+  isLogged: boolean;
 
-  constructor(private router: Router, 
-              private authenticationService: AuthenticationService,
-              private fbService: FacebookService) { }
+  constructor(private router: Router,
+              private authService: AuthService){}
 
-  goToLogin(){
-    this.router.navigate(['/iniciarSesion'])
+  goToSignIn() {
+    this.router.navigate(['/iniciarSesion']);
   }
 
-  goToNewPost(){
-    this.router.navigate(['/newpost'])
+  goToNewPost() {
+    if(this.authService.authenticated){
+      this.router.navigate(['/newpost']);
+    }else{
+      this.goToSignIn();
+    }
   }
 
-  isLogin(){
-    this.currentUser = localStorage.getItem('currentUser')?JSON.parse(localStorage.getItem('currentUser')):null;
-    return this.currentUser?true:false; 
-  }
-
-  logout(){
-    this.fbService.logout();
-    this.authenticationService.logout();
-    this.showThanks();
-    this.router.navigate(['/']);
-  }
-
-  showThanks(){
-    console.log("say good bye");
+  signOut(): void {
+    this.authService.signOut();
+    this.router.navigate(['/'])
   }
 
   ngOnInit() {
-      
+  
   }
 
 }

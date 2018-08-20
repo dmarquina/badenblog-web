@@ -16,7 +16,9 @@ export interface IPost {
     minAge?: number,
     creationDate?: Date,
     categories?: string[],
-    materials?: string[]
+    materials?: string[],
+    uid?: string,
+    userDisplayName?: string,
 }
 
 export interface INewpost {
@@ -25,6 +27,8 @@ export interface INewpost {
     minAge : number,
     materials: string[],
     categories: ICategoryNewPost[]
+    uid : string,
+    userDisplayName : string,
 }
 
 export interface ICategoryNewPost{

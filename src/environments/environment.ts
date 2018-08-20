@@ -7,3 +7,14 @@ export const environment = {
   urlApi : 'http://localhost:8080',
   production: false
 };
+
+export const firebaseEnvironment = {
+  firebase: {
+    apiKey: 'AIzaSyDZM6h-H8Trwu43f52wuSTYRLK_4MVDk6o',
+    authDomain: 'badenblog-69509.firebaseapp.com',
+    databaseURL: 'https://badenblog-69509.firebaseio.com',
+    projectId: 'badenblog-69509',
+    storageBucket: 'badenblog-69509.appspot.com',
+    messagingSenderId: '854636736911'
+  }
+};

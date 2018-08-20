@@ -4,7 +4,10 @@
       <mat-card-content>
        <h2>{{post.name}}</h2>
        <p>{{post.description}}</p>
-       <h5 class="title-form">Edad mínima: </h5><p>{{post.minAge}} años</p>
+       <h5 class="title-form">Edad mínima: </h5>
+       <mat-chip-list class="bottom-chiplist-space" >
+        <mat-chip color="primary" selected="true">{{post.minAge}} años</mat-chip> 
+       </mat-chip-list>
        <h5 class="title-form">Categorías</h5>
        <mat-chip-list class="bottom-chiplist-space" >
         <mat-chip color="primary" *ngFor="let category of post.categories" selected="true">{{category}}</mat-chip>
