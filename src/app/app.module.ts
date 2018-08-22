@@ -16,7 +16,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatChipsModule} from '@angular/material/chips';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MatListModule} from '@angular/material/list';
 
 import {FacebookModule} from 'ngx-facebook';
 import {NgxPaginationModule} from 'ngx-pagination';
@@ -51,6 +51,7 @@ import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {AngularFireAuthModule, AngularFireAuth} from 'angularfire2/auth';
 import {firebaseEnvironment} from '../environments/environment';
 import { AuthService } from './services/auth.service';
+import { SchedulefeedComponent } from './business/schedules/schedulefeed/schedulefeed.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { AuthService } from './services/auth.service';
     SigninComponent,
     NewpostComponent,
     MaterialchipsComponent,
-    DetailpostComponent
+    DetailpostComponent,
+    SchedulefeedComponent
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseEnvironment.firebase),
@@ -95,7 +97,7 @@ import { AuthService } from './services/auth.service';
     MatCheckboxModule,
     MatSliderModule,
     MatChipsModule,
-    MatDialogModule,
+    MatListModule,    
     routes
   ],
   providers: [LoginGuard,
