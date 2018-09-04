@@ -4,11 +4,23 @@
       <button mat-button class="newschedulebutton col l1 col m1 col s1" (click)=goBackFeed()>Regresar</button>
       <button mat-button color="primary" class="newschedulebutton push-l1 push-m1 push-s1 col m8 s8">Nuevo Programa</button>
     </div>
-    <mat-nav-list>
-      <a mat-list-item [routerLink]="['/detailpost' , 10]" > Programa del 7 de Agosto del 2018  </a>
-      <a mat-list-item [routerLink]="['/detailpost' , 10]" > Programa del 14 de Agosto del 2018  </a>
-      <a mat-list-item [routerLink]="['/detailpost' , 10]" > Programa del 21 de Agosto del 2018  </a>
-      <a mat-list-item [routerLink]="['/detailpost' , 10]" > Programa del 28 de Agosto del 2018  </a>
-    </mat-nav-list>
+    <mat-accordion *ngFor="let schedule of scheduleFeed">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header class="schedule-tittle">
+          <mat-panel-title>
+            {{ schedule.name? 'Programa sobre ' + schedule.name : 'Programa del ' + schedule.applicationDate}}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+          <div *ngFor="let p of schedule.posts">
+            <h3 class="col m12 mb-0">
+              <a [routerLink]="['/detailpost' , p.id]">{{p.name}}</a>
+            </h3>
+            <p class="col m12">
+              {{p.description}}
+            </p>
+            <hr>
+          </div>
+      </mat-expansion-panel>
+    </mat-accordion>
   </mat-card>
 </div>

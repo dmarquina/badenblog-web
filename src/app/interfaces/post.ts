@@ -35,3 +35,9 @@ export interface ICategoryNewPost{
     id:string,
     name:string
 }
+
+export interface IPostDisplay {
+    id: string,
+	name?: string,
+    description?: string,
+}

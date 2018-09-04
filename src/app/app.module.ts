@@ -17,6 +17,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatListModule} from '@angular/material/list';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 import {FacebookModule} from 'ngx-facebook';
 import {NgxPaginationModule} from 'ngx-pagination';
@@ -98,6 +99,7 @@ import { SchedulefeedComponent } from './business/schedules/schedulefeed/schedul
     MatSliderModule,
     MatChipsModule,
     MatListModule,    
+    MatExpansionModule,
     routes
   ],
   providers: [LoginGuard,

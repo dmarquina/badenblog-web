@@ -1,3 +1,6 @@
+a{
+    color:rgba(0, 0, 0, 0.87);
+}
 .schedulefeed{
     margin-top:10px; 
     padding: 0;
@@ -9,4 +12,11 @@
 
 .button-position{
     text-align: right !important;
+}
+.mat-list-item-content{
+    display: unset !important;
+}
+.schedule-tittle{
+    border-top: 1px solid #cacaca;
+    border-bottom: 1px solid #cacaca;
 }
