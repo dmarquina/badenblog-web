@@ -3,6 +3,8 @@
             <span class="spacer"></span>
             <button mat-button class="col s12 m3" (click)="goToNewPost()"
                         type="submit" >Publicar actividad</button>
+            <button mat-button class="col s12 m3" (click)="addToSchedules()"
+                        type="submit" >Mis programas</button>
             <button mat-button class="userButton" [matMenuTriggerFor]="menu">
                 <mat-icon >account_circle</mat-icon>
                 <span>{{authService.currentUserDisplayName}}</span>

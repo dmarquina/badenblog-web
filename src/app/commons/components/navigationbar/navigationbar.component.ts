@@ -29,6 +29,10 @@ export class NavigationbarComponent implements OnInit {
     }
   }
 
+  addToSchedules(){
+    this.router.navigate(['/myschedules']);
+  }
+  
   signOut(): void {
     this.authService.signOut();
     this.router.navigate(['/'])
